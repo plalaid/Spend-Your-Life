@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-accent: #6366f1; /* Indigo 500 */
+  --animate-spin-slow: spin 3s linear infinite;
+  
+  --color-bg-primary: var(--bg-primary);
+  --color-text-primary: var(--text-primary);
+}
+
+@layer base {
+  :root {
+    --bg-primary: #e0e5ec;
+    --text-primary: #1f2937; /* gray-800 */
+    --shadow-light: rgba(255, 255, 255, 0.7);
+    --shadow-dark: rgba(163, 177, 198, 0.7);
+    --shadow-inner-light: rgba(255, 255, 255, 0.6);
+    --shadow-inner-dark: rgba(163, 177, 198, 0.5);
+    --border-light: rgba(255, 255, 255, 0.3);
+  }
+
+  .dark {
+    --bg-primary: #2d3748; /* gray-800 */
+    --text-primary: #f3f4f6; /* gray-100 */
+    --shadow-light: rgba(74, 85, 104, 0.5); /* gray-600 */
+    --shadow-dark: rgba(26, 32, 44, 0.8); /* gray-900 */
+    --shadow-inner-light: rgba(74, 85, 104, 0.4);
+    --shadow-inner-dark: rgba(26, 32, 44, 0.6);
+    --border-light: rgba(255, 255, 255, 0.05);
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    @apply antialiased transition-colors duration-300;
+  }
+}
+
+@layer utilities {
+  .skeuo-card {
+    background: var(--bg-primary);
+    box-shadow: 12px 12px 24px var(--shadow-dark), -12px -12px 24px var(--shadow-light);
+    border: 1px solid var(--border-light);
+  }
+  .skeuo-card-inner {
+    background: var(--bg-primary);
+    box-shadow: inset 6px 6px 12px var(--shadow-inner-dark), inset -6px -6px 12px var(--shadow-inner-light);
+  }
+  .skeuo-button {
+    background: var(--bg-primary);
+    box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+    border: 1px solid var(--border-light);
+    @apply transition-all duration-200;
+  }
+  .skeuo-button:active {
+    box-shadow: inset 4px 4px 8px var(--shadow-inner-dark), inset -4px -4px 8px var(--shadow-inner-light);
+    @apply scale-95;
+  }
+  .skeuo-button-pressed {
+    box-shadow: inset 4px 4px 8px var(--shadow-inner-dark), inset -4px -4px 8px var(--shadow-inner-light);
+  }
+  .skeuo-input {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-light);
+    box-shadow: inset 4px 4px 8px var(--shadow-inner-dark), inset -4px -4px 8px var(--shadow-inner-light);
+    @apply rounded-lg p-2;
+  }
+  .glass-panel {
+    @apply bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-white/5;
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
